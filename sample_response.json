@@ -1,0 +1,7 @@
+{
+    "principal_loan_amount": 10000,
+    "monthly_payment_amount": 945.60,
+    "total_interest_amount": 1347.15,
+    "loan_term": 12,
+    "total_sum_payments": 11347.15
+}

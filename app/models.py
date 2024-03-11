@@ -1,0 +1,14 @@
+from .database import Base
+from sqlalchemy import Column, Integer, String, Float
+from sqlalchemy.sql.sqltypes import TIMESTAMP
+from sqlalchemy.sql.expression import text
+
+class Loans(Base):
+    __tablename__ = 'loans'
+
+    id = Column(Integer, primary_key=True, autoincrement=True, nullable=False)
+    fist_name = Column(String, nullable=False)
+    last_name = Column(String, nullable=False)
+    desired_loan_amount = Column(Float, nullable=False)
+    loan_term = Column(Integer, nullable=False)
+    created_at = Column(TIMESTAMP(timezone=True), nullable=False, server_default=text('now()'))
