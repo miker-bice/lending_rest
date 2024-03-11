@@ -7,7 +7,7 @@ def calculate_interest_rate() -> float:
     returns a float
 
     formula:
-    r = (BASE_INTEREST_RATE / 12) / 100
+    interest_rate_per_period = (BASE_INTEREST_RATE / 12) / 100
     '''
     interest_rate_per_year = BASE_INTEREST_RATE/ONE_YEAR
     interest_rate_per_period = interest_rate_per_year/100
@@ -20,7 +20,7 @@ def calculate_number_of_payments(loan_term:int) -> float:
     returns a float
 
     formula:
-    n = (loan_term/12) * 12
+    number_of_payments = (loan_term/12) * 12
     '''
     year = loan_term/ONE_YEAR
     number_of_payments = year * ONE_YEAR
@@ -33,7 +33,7 @@ def calculate_payment_amount(loan_amount, interest_rate, number_of_payments) -> 
     returns a float
 
     formula:
-    A = loan_amount * (upper_result / lower_result)
+    monthly_payment_amount = loan_amount * (upper_result / lower_result)
     '''
 
     upper_result = interest_rate * (1 + interest_rate)**number_of_payments
