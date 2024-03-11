@@ -53,3 +53,16 @@ def calculate_total_interest(principal_loan_amount, interest_rate, loan_term) ->
     total_interest = principal_loan_amount * interest_rate * loan_term
     
     return total_interest
+
+
+def calculate_total_sum_payments(principal_loan_amount, total_interest_amount) -> float:
+    '''
+    returns a float
+
+    formula:
+    total_sum_payments = principal_loan_amount + total_interest_amount
+    '''
+
+    total_sum_payments = principal_loan_amount + total_interest_amount
+
+    return total_sum_payments

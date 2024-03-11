@@ -21,4 +21,5 @@ class NewLoanResponse(BaseModel):
     monthly_payment_amount: float
     total_interest_amount: float
     loan_term: int
+    total_sum_payments: float
     
