@@ -9,8 +9,13 @@ router = APIRouter(
 )
 
 @router.get("/")
-async def get_users():
-    return {'message': 'hello I am the user endpoint'}
+async def get_user(user_id: int, db: Session = Depends(get_db)):
+    user = db.query(models.Users).filter(models.User.id == user_id).first()
+
+    if not user:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f'user not found')
+    
+    return user
 
 
 @router.post("/",status_code=status.HTTP_201_CREATED, response_model=schemas.UserResponse)
