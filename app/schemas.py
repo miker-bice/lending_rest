@@ -1,4 +1,4 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, EmailStr
 from typing import Literal
 from datetime import datetime
 
@@ -23,3 +23,7 @@ class NewLoanResponse(BaseModel):
     loan_term: int
     total_sum_payments: float
     
+
+class UserCreateSchema(BaseModel):
+    email: EmailStr
+    password: str = Field(min_length=8, max_length=35)
