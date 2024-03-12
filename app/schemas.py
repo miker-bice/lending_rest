@@ -3,8 +3,8 @@ from typing import Literal
 from datetime import datetime
 
 class LoanInput(BaseModel):
-    fist_name: str
-    last_name: str
+    fist_name: str = Field(min_length=1, max_length=30)
+    last_name: str = Field(min_length=1, max_length=30)
     desired_loan_amount: float = Field(ge=1000, le=10000)
     loan_term: Literal[3, 6, 9, 12, 15, 18]
 
