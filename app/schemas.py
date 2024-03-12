@@ -1,10 +1,10 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, EmailStr
 from typing import Literal
 from datetime import datetime
 
 class LoanInput(BaseModel):
-    fist_name: str
-    last_name: str
+    fist_name: str = Field(min_length=1, max_length=30)
+    last_name: str = Field(min_length=1, max_length=30)
     desired_loan_amount: float = Field(ge=1000, le=10000)
     loan_term: Literal[3, 6, 9, 12, 15, 18]
 
@@ -21,4 +21,18 @@ class NewLoanResponse(BaseModel):
     monthly_payment_amount: float
     total_interest_amount: float
     loan_term: int
+    total_sum_payments: float
     
+
+class UserCreate(BaseModel):
+    email: EmailStr
+    password: str = Field(min_length=8, max_length=35)
+
+
+class UserResponse(BaseModel):
+    id: int
+    email: EmailStr
+    created_at: datetime
+
+    class Config:
+        from_attributes = True

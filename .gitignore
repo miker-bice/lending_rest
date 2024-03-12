@@ -3,5 +3,6 @@
 
 /app/__pycache__
 
-/routers/__pycache__
+/app/routers/__pycache__
 
+*.db

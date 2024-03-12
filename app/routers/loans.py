@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends, status, HTTPException, Response
+from fastapi import APIRouter, Depends
 from ..database import get_db
 from .. import schemas, models, utils
 from sqlalchemy.orm import Session
@@ -28,13 +28,16 @@ async def create_loan(loan: schemas.LoanInput, db: Session = Depends(get_db)):
     interest_rate = utils.calculate_interest_rate()
     number_of_payments = utils.calculate_number_of_payments(new_loan.loan_term)
     monthly_payment_amount = utils.calculate_payment_amount(principal_loan_amount, interest_rate, number_of_payments)
-    total_interest_amount = utils.calculate_total_interest(principal_loan_amount, interest_rate, new_loan.loan_term)
-    
+    # total_interest_amount = utils.calculate_total_interest(principal_loan_amount, interest_rate, new_loan.loan_term) -> this follows the original Simple Interest Formula
+    total_interest_amount = utils.total_interest(monthly_payment_amount, number_of_payments, principal_loan_amount)
+    total_sum_payments = utils.calculate_total_sum_payments(principal_loan_amount, total_interest_amount)
+
     response = {
         'principal_loan_amount': principal_loan_amount,
         'monthly_payment_amount': monthly_payment_amount,
         'total_interest_amount': total_interest_amount,
-        'loan_term': new_loan.loan_term
+        'loan_term': new_loan.loan_term,
+        'total_sum_payments': total_sum_payments
     }
 
     return response
