@@ -2,6 +2,7 @@ from .database import Base
 from sqlalchemy import Column, Integer, String, Float
 from sqlalchemy.sql.sqltypes import TIMESTAMP
 from sqlalchemy.sql.expression import text
+from datetime import datetime
 
 class Loans(Base):
     __tablename__ = 'loans'
@@ -11,4 +12,5 @@ class Loans(Base):
     last_name = Column(String, nullable=False)
     desired_loan_amount = Column(Float, nullable=False)
     loan_term = Column(Integer, nullable=False)
-    created_at = Column(TIMESTAMP(timezone=True), nullable=False, server_default=text('now()'))
+    created_at = Column(TIMESTAMP(timezone=True), nullable=False, default=datetime.now())
+    # created_at = Column(TIMESTAMP(timezone=True), nullable=False, server_default=text('now()'))
