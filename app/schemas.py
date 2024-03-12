@@ -24,6 +24,15 @@ class NewLoanResponse(BaseModel):
     total_sum_payments: float
     
 
-class UserCreateSchema(BaseModel):
+class UserCreate(BaseModel):
     email: EmailStr
     password: str = Field(min_length=8, max_length=35)
+
+
+class UserResponse(BaseModel):
+    id: int
+    email: EmailStr
+    created_at: datetime
+
+    class Config:
+        from_attributes = True
