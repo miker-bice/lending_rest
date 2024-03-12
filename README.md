@@ -65,7 +65,7 @@ After all those hoops, your project directory should look like:
 
 Okay, we can now start installing the required packages, execute this command to install all the required packages:
 ```bash
-pip install fastapi['all'] sqlalchemy psycopg2
+pip install fastapi['all'] sqlalchemy psycopg2 passlib['bcrypt']
 ```
 
 Once the packages are installed, we can now proceed in running the application using the **uvicorn** dev server. Run the command:
@@ -104,13 +104,3 @@ Don't worry, you can use other databases with the application, just replace the 
 
 In other to explore the database file, you can use **DB browser for SQLite**, get the installer from its [official website](https://sqlitebrowser.org/dl/) 
 
-
-
-## Contributing
-
-Pull requests are welcome. For major changes, please open an issue first
-to discuss what you would like to change.
-
-## License
-
-[MIT](https://choosealicense.com/licenses/mit/)
